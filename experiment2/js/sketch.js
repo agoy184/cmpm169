@@ -58,8 +58,8 @@ function draw() {
       box(mouseX*1.5, mouseY/2, 25);
       box(mouseY*1.7, mouseY/3, 25);
       box(25, 25, mouseX*5)
-      circle(height/2, 0, mouseX);
-      circle(-height/2, 0, mouseX);
+      circle(width/2, 0, mouseX);
+      circle(-width/2, 0, mouseX);
     }
 
 // mousePressed() function is called once after every time a mouse button is pressed
