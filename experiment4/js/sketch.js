@@ -24,7 +24,10 @@ class MyClass {
         // code to run when method is called
     }
 }
-
+function preload(){
+    img1 =loadImage("img/Twindow.png")
+}
+  
 // setup() function is called once when the program starts
 function setup() {
     // place our canvas, making it fit our container
@@ -44,7 +47,7 @@ function setup() {
 
     capture = createCapture(VIDEO);
     capture.size(320, 240);
-  
+
 }
 
 // draw() function is called repeatedly, it's the main animation loop
@@ -57,7 +60,8 @@ function draw() {
     image(capture, 0, 240, 320, 240);
     filter(GRAY);
     image(capture, 320, 240, 320, 240);
-  
+    image(img1, -100, -50, 800, 590);
+
 }
 
 // mousePressed() function is called once after every time a mouse button is pressed
