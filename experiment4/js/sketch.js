@@ -53,14 +53,14 @@ function setup() {
 // draw() function is called repeatedly, it's the main animation loop
 function draw() {
     background(220);    
-    image(capture, 0, 0, 320, 240);
+    image(capture, canvasContainer.width()/2 - 300, 50, 300, 240);
     filter(THRESHOLD)
-    image(capture, 320, 0, 320, 240);
+    image(capture, canvasContainer.width()/2, 50, 320, 240);
     filter(INVERT);
-    image(capture, 0, 240, 320, 240);
+    image(capture, canvasContainer.width()/2 - 320, canvasContainer.height()/2, 320, 240);
     filter(GRAY);
-    image(capture, 320, 240, 320, 240);
-    image(img1, -100, -50, 800, 590);
+    image(capture, canvasContainer.width()/2, canvasContainer.height()/2, 320, 240);
+    image(img1, 250, -30, 800, 650);
 
 }
 
