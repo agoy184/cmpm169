@@ -82,8 +82,6 @@ function draw() {
     image(img3, 990, 30, 370, 109);
     image(lol, 990, 190, 300, 310);
     image(bob, 20, 150, 250, 310);
-
-
 }
 
 // mousePressed() function is called once after every time a mouse button is pressed
