@@ -27,6 +27,10 @@ class MyClass {
 }
 function preload(){
     img1 = loadImage("img/Twindow.png")
+    img2 = loadImage("img/music1.png")
+    img3 = loadImage("img/music2.png")
+    lol = loadImage("img/lol.gif")
+    bob = loadImage("img/bob.gif")
     song = loadSound('mus/sixPM.mp3');
 
 }
@@ -50,17 +54,21 @@ function setup() {
 
     capture = createCapture(VIDEO);
     capture.size(320, 240);
-
+  
 }
 
 // draw() function is called repeatedly, it's the main animation loop
 function draw() {
+
     if (song.isPlaying()) {
         // .isPlaying() returns a boolean
         background(255, 0, 0);
+        bob.play();
+        lol.play();
     } else {
-        song.play();
         background(0, 255, 0);
+        bob.pause();
+        lol.pause();
     }    
     image(capture, canvasContainer.width()/2 - 300, 50, 300, 240);
     filter(THRESHOLD)
@@ -70,10 +78,19 @@ function draw() {
     filter(GRAY);
     image(capture, canvasContainer.width()/2, canvasContainer.height()/2, 320, 240);
     image(img1, 250, -30, 800, 650);
+    image(img2, 0, 30, 300, 109);
+    image(img3, 990, 30, 370, 109);
+    image(lol, 990, 190, 300, 310);
+    image(bob, 20, 150, 250, 310);
+
 
 }
 
 // mousePressed() function is called once after every time a mouse button is pressed
 function mousePressed() {
-    // code to run when mouse is pressed
+    if (song.isPlaying()) {
+        song.stop();
+    } else {
+        song.play();
+    }    
 }
