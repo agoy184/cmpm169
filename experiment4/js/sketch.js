@@ -13,6 +13,7 @@ const VALUE2 = 2;
 // Globals
 let myInstance;
 let canvasContainer;
+let song;
 
 class MyClass {
     constructor(param1, param2) {
@@ -25,7 +26,9 @@ class MyClass {
     }
 }
 function preload(){
-    img1 =loadImage("img/Twindow.png")
+    img1 = loadImage("img/Twindow.png")
+    song = loadSound('mus/sixPM.mp3');
+
 }
   
 // setup() function is called once when the program starts
@@ -52,7 +55,13 @@ function setup() {
 
 // draw() function is called repeatedly, it's the main animation loop
 function draw() {
-    background(220);    
+    if (song.isPlaying()) {
+        // .isPlaying() returns a boolean
+        background(255, 0, 0);
+    } else {
+        song.play();
+        background(0, 255, 0);
+    }    
     image(capture, canvasContainer.width()/2 - 300, 50, 300, 240);
     filter(THRESHOLD)
     image(capture, canvasContainer.width()/2, 50, 320, 240);
