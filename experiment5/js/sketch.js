@@ -29,7 +29,7 @@ class MyClass {
 function setup() {
     // place our canvas, making it fit our container
     canvasContainer = $("#canvas-container");
-    let canvas = createCanvas(canvasContainer.width(), canvasContainer.height());
+    let canvas = createCanvas(canvasContainer.width(), canvasContainer.height(), WEBGL);
     canvas.parent("canvas-container");
     // resize canvas is the page is resized
     $(window).resize(function() {
@@ -41,24 +41,29 @@ function setup() {
 
     var centerHorz = windowWidth / 2;
     var centerVert = windowHeight / 2;
+    img = loadImage('img/sprink.jpeg');
+    bg = loadImage('img/sprinkLayer.jpeg');
+  
 }
 
 // draw() function is called repeatedly, it's the main animation loop
 function draw() {
-    background(220);    
-    // call a method on the instance
-    myInstance.myMethod();
-
-    // Put drawings here
-    var centerHorz = canvasContainer.width() / 2 - 125;
-    var centerVert = canvasContainer.height() / 2 - 125;
-    fill(234, 31, 81);
-    noStroke();
-    rect(centerHorz, centerVert, 250, 250);
-    fill(255);
-    textStyle(BOLD);
-    textSize(140);
-    text("p5*", centerHorz + 10, centerVert + 200);
+    background(2);
+    image(bg, -595, -450);
+    normalMaterial();
+    for (let f=-500; f<500; f+=120) {
+    for (let i=-500; i<500; i+=105) {
+    push();
+    translate(i, f, 0);  
+    rotateZ(frameCount * 0.0001 * f);
+    rotateX(frameCount * 0.0001 * i);
+    rotateY(frameCount * 0.0000001 * f * i);
+    texture(img);
+    torus(30, 20);
+    pop();
+    }
+    }
+  
 }
 
 // mousePressed() function is called once after every time a mouse button is pressed
