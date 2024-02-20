@@ -24,8 +24,13 @@ class MyClass {
         // code to run when method is called
     }
 }
-
-// setup() function is called once when the program starts
+// reference: https://editor.p5js.org/agoy184/sketches/d21QR2OIs
+let rules = {
+    start: "$hero reed $hero $feeling grass $feeling.norepeat",
+    $hero: "pond | lily | bug",
+    feeling: "weed | grass | frog",
+  };
+  
 function setup() {
     canvasContainer = $("#canvas-container");
     let canvas = createCanvas(canvasContainer.width(), canvasContainer.height());
@@ -44,17 +49,24 @@ function setup() {
 
     noStroke();
     starCount = 0;
+    let rg = RiTa.grammar(rules);
+    fill(9, 115, 57);
+    for (let i = 0; i < 15; i += 1) {
+      let result = rg.expand();
+      text(result, 200 * i, 120 + i * 12);
+    }
+  
 }
 
 // drawName() function is called repeatedly, it's the main animation loop
 function draw() {
     textSize(20);
     while (starCount < 100){
-    for (s=0; s<15; s++) {
+        for (s=0; s<15; s++) {
         const e = fill(227, 209, random(31));
         text("star", 9 * (s * random(50)), s * random(10));
         starCount++;
-    }
+        }
     }
 
     textSize(30);
