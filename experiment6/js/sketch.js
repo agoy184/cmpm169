@@ -43,11 +43,19 @@ function setup() {
     background(1, 5, 61);
 
     noStroke();
+    starCount = 0;
 }
 
 // drawName() function is called repeatedly, it's the main animation loop
 function draw() {
-
+    textSize(20);
+    while (starCount < 100){
+    for (s=0; s<15; s++) {
+        const e = fill(227, 209, random(31));
+        text("star", 9 * (s * random(50)), s * random(10));
+        starCount++;
+    }
+    }
 
     textSize(30);
     for (var x=0; x < 25; x++){
@@ -56,7 +64,7 @@ function draw() {
             text("water", i * 5 * x, i*20);
         }
     }
-    
+
 }
 
 // mousePressed() function is called once after every time a mouse button is pressed
